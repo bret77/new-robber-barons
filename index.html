@@ -1,0 +1,54 @@
+<html><head><meta charset="utf-8"><style>body{font-family:sans-serif;max-width:700px;margin:40px auto;line-height:1.5;color:#111}h1{font-size:26px}h2{margin-top:28px;border-bottom:1px solid #ccc}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px;text-align:left;font-size:13px}blockquote{border-left:3px solid #888;margin:0;padding-left:12px;font-style:italic}.note{background:#f3f3f3;padding:10px}</style></head><body>
+<h1>The New Robber Barons: AI Compute, Caps, and How Small Users Fight Back</h1>
+<p><b>Bret Vance</b> · November 4, 2026</p>
+<h2>Executive summary</h2>
+<blockquote>"They literally are the present-day robber barons." — Bret Vance</blockquote>
+<p>In the 1800s, whoever controlled the refinery, the rail line, or the steel mill set the terms for everyone downstream. In 2026, whoever controls the GPUs and the frontier models does the same. One chipmaker sells most of the data-center accelerators, and a few labs, financed by the largest cloud companies, run the models most people use.</p>
+<p>Small users feel this as caps, weekly limits, per-model limits, upgrade prompts at the worst moment, credits that expire, and offers to trade data for compute. This paper lays out the parallel, shows real numbers from one small business, gives the companies a fair hearing, and lays out a practical counter-strategy: shrink the models, use free tiers first, and keep a local AI that nobody can cap.</p>
+<h2>The historical parallel</h2>
+<p><b>Oil: Rockefeller and Standard Oil.</b> Controlled 21 of Cleveland's 26 refineries by 1872 and about 90% of U.S. refining capacity ten years later [2]. The Supreme Court found it an unreasonable restraint of trade on May 15, 1911 and ordered it broken up [1].</p>
+<p><b>Rail: Vanderbilt and the railroads.</b> Railroads set prices, excluded competitors, and gave rebates to big shippers, which hurt farmers [5]. Congress answered with the Interstate Commerce Act of 1887, banning rebates and rate discrimination [6].</p>
+<p><b>Steel: Carnegie.</b> Carnegie's mills depended on rail rates; his correspondence with Frick shows him bargaining over Vanderbilt rail lines and rates [7].</p>
+<p class="note"><b>The pattern:</b> Control the bottleneck. Set the price. Reward the biggest customers with better terms. Pull up the ladder behind you.</p>
+<p>Footnote: Standard Oil's share had already slipped to roughly 64% by 1911 as rivals grew [3][4]. Bottlenecks can loosen when new supply shows up.</p>
+<h2>Today's bottleneck</h2>
+<p>Share of combined AI and data-center revenue among Nvidia, Intel and AMD, late 2025: Nvidia 86%, AMD 7%, Intel 6%. In 2021 Nvidia held about 25% [8].</p>
+<p>In January 2025 the FTC published a staff study of Microsoft–OpenAI, Amazon–Anthropic and Google–Anthropic. Staff found the clouds kept equity and revenue-sharing rights, gained consultation and exclusivity rights, and required much of the investment to be spent back on the investor's cloud, and warned of effects on access to compute and higher switching costs [9].</p>
+<p>Epoch AI estimates frontier training costs have grown about 2.4x per year since 2016 [10].</p>
+<h2>The mechanics users feel</h2>
+<table><tr><th>Mechanism</th><th>What it feels like</th></tr>
+<tr><td>Usage caps</td><td>Work stops mid-task, on a plan you already paid for.</td></tr>
+<tr><td>Weekly limits</td><td>One heavy day can lock you out for the rest of the week.</td></tr>
+<tr><td>Per-model limits</td><td>The best model runs out first, so you get bumped to a weaker one.</td></tr>
+<tr><td>Upgrade prompts</td><td>The pitch to pay more shows up right when you hit the wall.</td></tr>
+<tr><td>Expiring credits</td><td>Free compute with a short fuse.</td></tr>
+<tr><td>Data-for-credits</td><td>Free usage in exchange for data you can't take back.</td></tr></table>
+<p>Anthropic announced weekly limits for Claude Pro and Max from August 28, 2025, alongside 5-hour limits and a separate Opus weekly limit, saying one user had consumed "tens of thousands in model usage on a $200 plan," and offered extra usage at standard API rates [11].</p>
+<h2>Why AIs build in stops (opinion, not measured)</h2>
+<ol><li><b>Cost.</b> Every answer burns real GPU time, and flat-rate plans lose money on heavy users.</li><li><b>Safety and liability.</b> Asking before sends, deletes and purchases protects the company from blame.</li><li><b>Upsell.</b> A limit that hits when you're on a roll is when you're most likely to pay more.</li></ol>
+<h2>Case study: one small business</h2>
+<table><tr><th>Item</th><th>Figure</th><th>Basis</th></tr>
+<tr><td>Claude Ultra plan</td><td>$213.20/month (Sep 23 and Oct 23 invoices)</td><td>Measured</td></tr>
+<tr><td>Claude weekly limit</td><td>99% used, resets Monday</td><td>Measured</td></tr>
+<tr><td>Claude cloud session credit</td><td>$250 reported; expiry Nov 5, 2026 1:59 AM CST unread from billing as of Nov 5</td><td>Unverified</td></tr>
+<tr><td>Codex (ChatGPT Pro plan)</td><td>$106.40/month, renews the 27th</td><td>Measured</td></tr>
+<tr><td>Grok usage</td><td>70% used, resets Nov 5</td><td>Measured</td></tr>
+<tr><td>xAI data-sharing offer</td><td>About $150/month API credits</td><td>Estimated, unofficial docs</td></tr></table>
+<p>About $320 a month across two subscriptions, and I still hit the weekly wall. The $250 credit only runs on Anthropic's machines and lasts about a day. The xAI credits can change or end at any time, but shared data stays shared.</p>
+<p class="note"><b>The lopsided deal:</b> If they want free stuff from me forever, I want free stuff from them forever.</p>
+<h2>The counter-strategy</h2>
+<ol><li><b>Miniaturize.</b> My local AI, B, runs on one RTX 5060 Ti 16 GB, two models on one card. Pruning an expert model took it from 22.27 GB to 12.05 GB while keeping 86.7% expert coverage (measured).</li>
+<li><b>Free tiers first, paid second</b>, and switch models when one hits its limit.</li>
+<li><b>Route general questions to free hosted GPUs.</b> Their video RAM instead of ours.</li>
+<li><b>Spend expiring credits on real work.</b></li>
+<li><b>Keep a local AI nobody can cap.</b></li></ol>
+<h2>What the companies would say</h2>
+<p><b>Their case:</b> compute is expensive and rising [10]; always-on users degrade service for others; account sharing and resale are real abuses; confirming before sends and purchases is real safety.</p>
+<p><b>The small user's reply:</b> limits are opaque and change mid-subscription; the escape always goes back to the same company; data-for-credits trades the permanent for the revocable; concentration leaves few places to switch.</p>
+<h2>Conclusion and calls to action</h2>
+<p>The robber barons lost their grip when new supply arrived and the public demanded fair terms. Every job a small local model or free tier handles is a job nobody can cap or reprice.</p>
+<ol><li>Measure your own usage and costs.</li><li>Use free and included capacity first, paid credit last.</li><li>Run at least one capable model on your own hardware.</li><li>Read data-sharing terms first; treat anything shared as permanent.</li><li>Support transparency on limits and pricing, and fair access to compute.</li></ol>
+<h2>Sources</h2><ol style="font-size:12px">
+<li>https://supreme.justia.com/cases/federal/us/221/1/</li><li>https://case.edu/ech/articles/b/bp-america</li><li>https://www.cato.org/regulation/summer-2025/reappraising-standard-oil</li><li>https://en.wikipedia.org/wiki/Standard_Oil</li><li>https://www.archives.gov/milestone-documents/interstate-commerce-act</li><li>https://www.senate.gov/artandhistory/history/minute/Interstate_Commerce_Act_Is_Passed.htm</li><li>http://digital.library.pitt.edu/islandora/object/pitt%3A31735061569871</li><li>https://www.visualcapitalist.com/charted-the-battle-for-ai-data-center-revenue-2021-2025/</li><li>https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-issues-staff-report-ai-partnerships-investments-study</li><li>https://epoch.ai/publications/how-much-does-it-cost-to-train-frontier-ai-models</li><li>https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/</li></ol>
+<p style="font-size:12px;margin-top:36px;color:#555">Contact: vsre77@gmail.com · 512-327-6800<br>Hosted for Bret Vance. California domain target: ai94105.com (San Francisco).</p>
+</body></html>
